@@ -32,3 +32,4 @@ repository = "packsaddle/gitconfig2json_cli"
 
 [dependencies]
 atty = "0.2.3"
+clap = "2.27.1"
