@@ -31,3 +31,4 @@ repository = "packsaddle/gitconfig2json_cli"
 repository = "packsaddle/gitconfig2json_cli"
 
 [dependencies]
+atty = "0.2.3"
