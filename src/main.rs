@@ -32,7 +32,7 @@ fn main() {
             "can't read.",
         );
     }
-    match gitconfig2json::run() {
+    match gitconfig2json::run(buffer.as_ref()) {
         Ok(json) => println!("{}", json),
         Err(err) => eprintln!("{}", err),
     }
