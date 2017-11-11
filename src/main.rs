@@ -33,7 +33,7 @@ fn main() {
         );
     }
     match gitconfig2json::run(buffer.as_ref()) {
-        Ok(json) => println!("{}", json),
+        Ok(json) => println!("{:?}", json),
         Err(err) => eprintln!("{}", err),
     }
 }

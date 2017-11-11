@@ -15,8 +15,42 @@ pub fn run(message: &str) -> Result<String, Box<Error>> {
         if keys.len() == 0 {
             continue;
         }
-        map.insert(keys.to_owned(), Value::String(value.to_owned()));
-//        println!("{} --- {}", keys, value);
+        let split_keys = Vec::from_iter(keys.split(".").map(String::from));
+        match split_keys.len() {
+            1 => {
+                map.insert(split_keys[0].to_owned(), Value::String(value.to_owned()));
+                ()
+            }
+            2 => {
+                let mut cloned = map.clone();
+                match cloned.get(&split_keys[0]) {
+                    Some(object) => {
+                        let mut internal = object.as_object().unwrap().clone();
+                        internal.insert(split_keys[1].to_owned(), Value::String(value.to_owned()));
+                        map.insert(split_keys[0].to_owned(), Value::Object(internal));
+                        ()
+                    }
+                    None => {
+                        let mut internal = Map::new();
+                        internal.insert(split_keys[1].to_owned(), Value::String(value.to_owned()));
+                        map.insert(split_keys[0].to_owned(), Value::Object(internal));
+                        ()
+                    }
+                }
+            }
+            n if n >= 3 => {
+                let mut internal = Map::new();
+                let mut external = Map::new();
+                internal.insert(
+                    split_keys[n - 1].to_owned(),
+                    Value::String(value.to_owned()),
+                );
+                external.insert(split_keys[1..n - 1].join("."), Value::Object(internal));
+                map.insert(split_keys[0].to_owned(), Value::Object(external));
+                ()
+            }
+            _ => continue,
+        }
     }
 
     Ok(serde_json::to_string(&map).unwrap())
@@ -40,6 +74,8 @@ mod test {
         f.read_to_string(&mut buf).expect(
             "something went wrong reading the file",
         );
-        println!("{}", run(buf.as_ref()).unwrap());
+        println!("{}", buf);
+        println!("----");
+        println!("{:?}", run(buf.as_ref()).unwrap());
     }
 }
