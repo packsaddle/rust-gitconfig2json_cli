@@ -92,7 +92,7 @@ pub fn run(message: &str) -> Result<String, Box<Error>> {
                     }
                 }
             }
-            _ => continue,
+            _ => return Err(From::from("unexpected something happens.".to_owned())),
         }
     }
 
