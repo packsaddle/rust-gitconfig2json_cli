@@ -1,8 +1,6 @@
 extern crate serde_json;
 
 use std::error::Error;
-use std::fs::File;
-use std::io::prelude::*;
 use std::iter::FromIterator;
 use self::serde_json::{Value, Map};
 
@@ -66,6 +64,8 @@ fn split_once(in_string: &str) -> (&str, &str) {
 #[cfg(test)]
 mod test {
     use super::*;
+    use std::fs::File;
+    use std::io::prelude::*;
 
     #[test]
     fn parse() {
