@@ -8,6 +8,47 @@ See [gitconfig2json](https://github.com/packsaddle/rust-gitconfig2json) for the 
 
 ## Example
 
+```
+$ git config --list --null | gitconfig2json | jq
+{
+  "branch": {
+    "chore/foo=bar.baz": {
+      "merge": "refs/heads/master",
+      "remote": "upstream"
+    },
+    "master": {
+      "merge": "refs/heads/master",
+      "remote": "upstream"
+    }
+  },
+  "color": {
+    "ui": "auto"
+  },
+  "core": {
+    "bare": "false",
+    "editor": "vim",
+    "excludesfile": "~/data/src/github.com/sanemat/dotfiles2016/gitignore-system",
+    "filemode": "false",
+    "logallrefupdates": "true",
+    "repositoryformatversion": "0"
+  },
+  "remote": {
+    "upstream": {
+      "fetch": "+refs/heads/*:refs/remotes/upstream/*",
+      "url": "git@github.com:packsaddle/rust-gitconfig2json_cli.git"
+    }
+  },
+  "url": {
+    "git@gist.github.com:": {
+      "pushinsteadof": "https://gist.github.com//"
+    },
+    "git@github.com:": {
+      "pushinsteadof": "https://github.com/"
+    }
+  }
+}
+```
+
 
 ## Install
 
