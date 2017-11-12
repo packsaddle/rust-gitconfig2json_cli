@@ -27,10 +27,10 @@ $ cargo install gitconfig2json_cli
 
 MIT/Apache-2.0 © [Sanemat](sane.jp)
 
-[travis-url]: https://travis-ci.org/packsaddle/gitconfig2json_cli
-[travis-image]: https://img.shields.io/travis/packsaddle/gitconfig2json_cli/master.svg?style=flat-square&label=travis
-[appveyor-url]: https://ci.appveyor.com/project/packsaddle/gitconfig2json-cli/branch/master
-[appveyor-image]: https://img.shields.io/appveyor/ci/packsaddle/gitconfig2json-cli/master.svg?style=flat-square&label=appveyor
+[travis-url]: https://travis-ci.org/packsaddle/rust-gitconfig2json_cli
+[travis-image]: https://img.shields.io/travis/packsaddle/rust-gitconfig2json_cli/master.svg?style=flat-square&label=travis
+[appveyor-url]: https://ci.appveyor.com/project/sanemat/rust-gitconfig2json-cli/branch/master
+[appveyor-image]: https://img.shields.io/appveyor/ci/sanemat/rust-gitconfig2json-cli/master.svg?style=flat-square&label=appveyor
 [crates-url]: https://crates.io/crates/gitconfig2json_cli
 [crates-image]: https://img.shields.io/crates/v/gitconfig2json_cli.svg?style=flat-square
 [license-image]: https://img.shields.io/crates/l/gitconfig2json_cli.svg?style=flat-square
