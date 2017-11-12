@@ -9,6 +9,9 @@ pub fn run(message: &str) -> Result<String, Box<Error>> {
     let mut map = Map::new();
 
     for git_config in &git_configs {
+        if git_config.is_empty() {
+            continue;
+        }
         let (keys, value) = split_once(git_config);
         if keys.len() == 0 {
             continue;
