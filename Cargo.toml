@@ -33,4 +33,4 @@ repository = "packsaddle/rust-gitconfig2json_cli"
 [dependencies]
 atty = "0.2.3"
 clap = "2.27.1"
-serde_json = "1.0.6"
+gitconfig2json = "0.1.1"

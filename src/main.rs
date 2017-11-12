@@ -1,7 +1,7 @@
 extern crate atty;
 #[macro_use]
 extern crate clap;
-mod gitconfig2json;
+extern crate gitconfig2json;
 
 use atty::Stream;
 use clap::{Arg, App};
