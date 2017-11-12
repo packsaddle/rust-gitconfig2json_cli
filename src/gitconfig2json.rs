@@ -20,7 +20,7 @@ pub fn run(message: &str) -> Result<String, Box<Error>> {
                 ()
             }
             2 => {
-                let mut cloned = map.clone();
+                let cloned = map.clone();
                 match cloned.get(&split_keys[0]) {
                     Some(object) => {
                         let mut internal = object.as_object().unwrap().clone();
