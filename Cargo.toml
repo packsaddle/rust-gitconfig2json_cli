@@ -5,7 +5,7 @@ categories = [
     "command-line-utilities",
     "development-tools",
 ]
-description = "My striking module"
+description = "Parse `git config --list --null` for cli"
 include = [
     "src/**/*",
     "Cargo.toml",

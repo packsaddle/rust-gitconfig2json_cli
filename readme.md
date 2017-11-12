@@ -2,16 +2,16 @@
 
 [![crates version][crates-image]][crates-url] [![Travis-CI Status][travis-image]][travis-url] [![Appveyor Status][appveyor-image]][appveyor-url] ![license][license-image]
 
-> My striking module
+> Parse `git config --list --null` for cli
 
-See [gitconfig2json_cli](https://github.com/packsaddle/gitconfig2json_cli) for the programmatic API.
+See [gitconfig2json](https://github.com/packsaddle/rust-gitconfig2json) for the programmatic API.
 
 ## Example
 
 
 ## Install
 
-Download from [Latest release](https://github.com/packsaddle/gitconfig2json_cli/releases/latest) for your own environment.
+Download from [Latest release](https://github.com/packsaddle/rust-gitconfig2json_cli/releases/latest) for your own environment.
 
 or
 
