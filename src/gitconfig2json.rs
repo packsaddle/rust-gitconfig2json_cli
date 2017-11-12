@@ -39,15 +39,55 @@ pub fn run(message: &str) -> Result<String, Box<Error>> {
                 }
             }
             n if n >= 3 => {
-                let mut internal = Map::new();
-                let mut external = Map::new();
-                internal.insert(
-                    split_keys[n - 1].to_owned(),
-                    Value::String(value.to_owned()),
-                );
-                external.insert(split_keys[1..n - 1].join("."), Value::Object(internal));
-                map.insert(split_keys[0].to_owned(), Value::Object(external));
-                ()
+                // TODO: reduce clone
+                let cloned_for_external = map.clone();
+                match cloned_for_external.get(&split_keys[0]) {
+                    Some(object) => {
+                        // TODO: reduce clone
+                        let mut external = object.as_object().unwrap().clone();
+                        let cloned_external = external.clone();
+                        match cloned_external.get(&split_keys[1..n - 1].join(".")) {
+                            Some(object2) => {
+                                // TODO: reduce clone
+                                let mut internal = object2.as_object().unwrap().clone();
+                                internal.insert(
+                                    split_keys[n - 1].to_owned(),
+                                    Value::String(value.to_owned()),
+                                );
+                                external.insert(
+                                    split_keys[1..n - 1].join("."),
+                                    Value::Object(internal),
+                                );
+                                map.insert(split_keys[0].to_owned(), Value::Object(external));
+                                ()
+                            }
+                            None => {
+                                let mut internal = Map::new();
+                                internal.insert(
+                                    split_keys[n - 1].to_owned(),
+                                    Value::String(value.to_owned()),
+                                );
+                                external.insert(
+                                    split_keys[1..n - 1].join("."),
+                                    Value::Object(internal),
+                                );
+                                map.insert(split_keys[0].to_owned(), Value::Object(external));
+                                ()
+                            }
+                        }
+                    }
+                    None => {
+                        let mut internal = Map::new();
+                        internal.insert(
+                            split_keys[n - 1].to_owned(),
+                            Value::String(value.to_owned()),
+                        );
+                        let mut external = Map::new();
+                        external.insert(split_keys[1..n - 1].join("."), Value::Object(internal));
+                        map.insert(split_keys[0].to_owned(), Value::Object(external));
+                        ()
+                    }
+                }
             }
             _ => continue,
         }
