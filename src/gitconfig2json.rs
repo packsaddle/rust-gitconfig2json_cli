@@ -20,9 +20,11 @@ pub fn run(message: &str) -> Result<String, Box<Error>> {
                 ()
             }
             2 => {
+                // TODO: reduce clone
                 let cloned = map.clone();
                 match cloned.get(&split_keys[0]) {
                     Some(object) => {
+                        // TODO: reduce clone
                         let mut internal = object.as_object().unwrap().clone();
                         internal.insert(split_keys[1].to_owned(), Value::String(value.to_owned()));
                         map.insert(split_keys[0].to_owned(), Value::Object(internal));
